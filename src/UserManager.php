@@ -12,6 +12,26 @@ class UserManager
     }
 
     /**
+     * Crea un utente sudo.
+     */
+    public function createSudoUser(string $username, string $password): string
+    {
+        if (!$this->ssh) {
+            $this->logger->error("Tentativo di creare un utente sudo senza connessione");
+            throw new \Exception('Non connesso');
+        }
+
+        $addUserCmd = "sudo useradd -m -s /bin/bash $username";
+        $setPassCmd = "echo '$username:$password' | sudo chpasswd";
+        $grantSudoCmd = "sudo usermod -aG sudo $username";
+
+        $this->executeSudoCommand($addUserCmd, $password);
+        $this->executeSudoCommand($setPassCmd, $password);
+        $this->logger->info("Creato utente sudo: $username");
+        return $this->executeSudoCommand($grantSudoCmd, $password);
+    }
+
+    /**
      * Crea un utente limitato.
      */
     public function createLimitedUser(string $username, string $password): string
