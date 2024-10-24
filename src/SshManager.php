@@ -68,4 +68,33 @@ class SshManager
             throw new \Exception("Errore di connessione con chiave SSH: " . $e->getMessage());
         }
     }
+
+    /**
+     * Esegui un comando sul server.
+     */
+    public function executeCommand(string $command): string
+    {
+        if (!$this->ssh) {
+            $this->logger->error("Tentativo di eseguire un comando senza connessione");
+            throw new \Exception('Non connesso');
+        }
+
+        $this->logger->info("Esecuzione comando: $command");
+        return $this->ssh->exec($command);
+    }
+
+    /**
+     * Esegui un comando con sudo.
+     */
+    public function executeSudoCommand(string $command, string $password): string
+    {
+        if (!$this->ssh) {
+            $this->logger->error("Tentativo di eseguire un comando sudo senza connessione");
+            throw new \Exception('Non connesso');
+        }
+
+        $this->logger->info("Esecuzione comando sudo: $command");
+        $this->ssh->write("echo '$password' | sudo -S $command\n");
+        return $this->ssh->read();
+    }
 }
