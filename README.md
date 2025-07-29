@@ -27,3 +27,5 @@ Install the module via Composer:
 
 ```bash
 composer require ostap-mykhaylyak/gate
+```bash
+composer config repositories.gate vcs https://github.com/ostap-mykhaylyak/gate
