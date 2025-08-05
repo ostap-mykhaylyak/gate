@@ -1,3 +1,3 @@
 <?php
 
-$routes->get('login', 'Ostap\Gate\Controllers\Auth::login');
+$routes->get('login', '\Ostap\Gate\Controllers\Auth::login');
