@@ -3,16 +3,20 @@
   "description": "CodeIgniter 4",
   "type": "library",
   "license": "MIT",
+  "minimum-stability": "stable",
   "autoload": {
     "psr-4": {
       "Ostap\\Gate\\": "src/"
     }
   },
   "extra": {
-    "codeigniter4": {
-      "discover": [
-        "Ostap\\Gate"
-      ]
+        "codeigniter4": {
+            "config": [
+                "src/Config/Config.php"
+            ],
+            "routes": [
+                "src/Config/Routes.php"
+            ]
+        }
     }
-  }
 }
