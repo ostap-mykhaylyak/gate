@@ -3,7 +3,6 @@
   "description": "CodeIgniter 4",
   "type": "library",
   "license": "MIT",
-  "minimum-stability": "stable",
   "autoload": {
     "psr-4": {
       "Ostap\\Gate\\": "src/"
