@@ -24,10 +24,9 @@ A modular authentication system for CodeIgniter 4. Provides user registration, l
 ## 📦 Installation
 
 Install the module via Composer:
-
-```bash
-composer require ostap-mykhaylyak/gate
-```
 ```bash
 composer config repositories.gate vcs https://github.com/ostap-mykhaylyak/gate
+```
+```bash
+composer require ostap-mykhaylyak/gate:dev-main
 ```
