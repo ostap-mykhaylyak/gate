@@ -30,3 +30,7 @@ composer config repositories.gate vcs https://github.com/ostap-mykhaylyak/gate
 ```bash
 composer require ostap-mykhaylyak/gate:dev-main
 ```
+```bash
+php spark migrate:refresh --all
+php spark db:seed Ostap\\Gate\\Database\\Seeds\\Users
+```
